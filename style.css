@@ -450,3 +450,15 @@ footer {
 .card-premium:hover .btn-view {
     color: #C5A021;
 }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Aquí podrías poner un menú hamburguesa luego */
+    .hero-bg.b2 { background-position: center; } /* En móvil mejor centrado */
+    .catalog { padding: 60px 20px; }
+    .footer-content { text-align: center; }
+    .social-links { justify-content: center; }
+    .footer-desc { margin: 0 auto; }
+}
+
+
+
