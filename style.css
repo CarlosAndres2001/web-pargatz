@@ -453,6 +453,7 @@ footer {
 
 @media (max-width: 768px) {
     .nav-links { display: none; } /* Aquí podrías poner un menú hamburguesa luego */
+    .hero h1 { font-size: 3.5rem; font-weight: 100; letter-spacing: 20px; }
     .hero-bg.b2 { background-position: center; } /* En móvil mejor centrado */
     .catalog { padding: 60px 20px; }
     .footer-content { text-align: center; }
@@ -460,5 +461,86 @@ footer {
     .footer-desc { margin: 0 auto; }
 }
 
+/* HAMBURGUESA MINIMALISTA */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 12px;
+    cursor: pointer;
+    z-index: 1100;
+}
 
+.bar {
+    width: 100%;
+    height: 1px; /* Línea ultra fina tipo Gucci */
+    background-color: var(--blanco);
+    transition: var(--transicion);
+}
 
+/* SIDEBAR MÓVIL */
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Escondido */
+    width: 80%;
+    height: 100vh;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.side-menu.active {
+    right: 0;
+}
+
+.close-menu {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--dorado);
+}
+
+.side-links {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.side-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: 100;
+    transition: var(--transicion);
+}
+
+.side-links a:hover {
+    color: var(--dorado);
+    padding-left: 10px;
+}
+
+.side-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: var(--gris_texto);
+}
+
+/* MOSTRAR SOLO EN MÓVIL */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+}

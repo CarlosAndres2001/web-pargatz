@@ -11,14 +11,36 @@
 <body>
 
     <nav id="navbar">
-        <a href="index.html" class="logo"><img src="img/logo.png" style="width: 100px;" alt=""></a>
+        <a href="index.html" class="logo"><img src="img/logo.png" style="width: 100px;" alt="PARGATZ"></a>
+        
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="catalog.html">Catalog</a>
             <a href="#">About Us</a>
             <a href="#">Contact</a>
         </div>
+    
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    
+        <div class="side-menu" id="side-menu">
+            <div class="close-menu" id="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="side-links">
+                <a href="index.html">Home</a>
+                <a href="catalog.html">Catalog</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="side-footer">
+                <p>PARGATZ MAGNETIC MOOD</p>
+            </div>
+        </div>
     </nav>
+
     <section class="hero">
         <div class="hero-bg active" style="background-image: url('img/banner1.jpg');"></div>
         <div class="hero-bg b2" style="background-image: url('img/banner2.jpeg');"></div>
@@ -176,7 +198,6 @@
         </div>
     </section>
 
-
     <footer>
         <div class="footer-content">
             <div class="footer-col">
@@ -216,7 +237,6 @@
         </div>
     </footer>
 
-
     <script>
         let lastScroll = 0;
         window.addEventListener('scroll', () => {
@@ -235,6 +255,7 @@
             slides[current].classList.add('active');
         }, 2000);
     </script>
+
     <script>
         function carruselHero() {
             const backgrounds = document.querySelectorAll('.hero-bg');
@@ -250,5 +271,29 @@
         // Llama a la función cuando cargue la página
         window.addEventListener('load', carruselHero);
     </script>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu');
+        const closeBtn = document.getElementById('close-menu');
+        const sideMenu = document.getElementById('side-menu');
+        
+        // Abrir menú
+        menuBtn.addEventListener('click', () => {
+            sideMenu.classList.add('active');
+        });
+        
+        // Cerrar menú
+        closeBtn.addEventListener('click', () => {
+            sideMenu.classList.remove('active');
+        });
+        
+        // Cerrar si hacen clic en un link
+        document.querySelectorAll('.side-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                sideMenu.classList.remove('active');
+            });
+        });
+    </script>
+    
 </body>
 </html>
