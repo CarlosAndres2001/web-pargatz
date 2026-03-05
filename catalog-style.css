@@ -478,7 +478,7 @@ footer {
 
 @media (max-width: 768px) {
     .hero-logo img {
-        width: 350px;
+        width: 350px;  
     }
     
     .hero-phrase {

@@ -105,6 +105,8 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
 /* El contenido siempre arriba de los fondos */
 .hero-content {
     position: relative;
+    padding-left: 52%;
+    padding-top: 25%;
     z-index: 2;
 }
 
@@ -115,15 +117,19 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
 
 /* CAROUSEL */
 .gallery-container { padding: 80px 0; background: #050505; }
-.carousel { width: 100%; height: 200px; position: relative; overflow: hidden; }
+.carousel { width: 100%; height: 250px; position: relative; overflow: hidden; }
 .slide { 
-    position: absolute; width: 100%; height: 100%; opacity: 0; 
-    transition: opacity 1.5s ease; background-size: cover; background-position: center; 
+    position: absolute; width: 100%; height: 100%; opacity: 0;
+    transition: opacity 1.5s ease; background-size: auto; background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .slide.active { opacity: 0.4; }
+.slide video { width: 100%; height: 100%; object-fit: cover; }
 
 /* PRODUCT CATALOG */
-.catalog { padding: 100px 5%; }
+.catalog { padding: 80px 5%; }
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -352,12 +358,12 @@ footer {
 /* CAJA DE IMAGEN (FONDO BLANCO) */
 .product-img-box {
     background: #ffffff; /* Fondo blanco para la foto */
-    height: 250px;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    padding: 20px;
+    padding: 0px;
 }
 
 .product-img-box img {

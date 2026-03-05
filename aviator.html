@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PARGATZ | Product</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="product.css">
+
+</head>
+<body>
+    <!-- NAV -->
+     
+    <nav id="navbar">
+        <a href="index.html">
+            <img src="img/logo.png" class="nav-logo">
+        </a>
+    </nav>
+    <!-- MAIN IMAGE -->
+    <section class="gallery">
+        <img id="mainImage" src="img/catalogo/aviator/aviatorblack.JPG">
+    </section>
+    <!-- THUMBNAILS -->
+    <section class="thumbnails">
+        <img src="img/catalogo/aviator/aviatorblack (1).JPG" class="thumb active">
+        <img src="img/catalogo/aviator/aviatorblack (2).JPG" class="thumb">
+        <img src="img/catalogo/aviator/aviatorblack (3).JPG" class="thumb">
+        <img src="img/catalogo/aviator/aviatorblack (4).JPG" class="thumb">
+        <img src="img/catalogo/aviator/aviatorblack (7).JPG" class="thumb">
+        <img src="img/catalogo/aviator/aviatorblack (6).JPG class="thumb active">
+        <img src="img/catalogo/aviator/aviatorblack (8).JPG" class="thumb">
+
+    </section>
+    <!-- PRODUCT INFO -->
+    <section class="product-container">
+        <div class="product-left">
+            <span class="product-label">THE ICON</span>
+            <h1 class="product-title">TATE AVIATOR</h1>
+            <div class="product-price">$99</div>
+            <p class="product-description">
+            Engineered for high-altitude style. Featuring magnetic technology and luxury construction.
+            </p>
+        </div>
+        <div class="product-right">
+
+            <button class="buy-button">
+            ADD TO CART
+            </button>
+
+            <div class="product-meta">
+            Free worldwide shipping<br>
+            Magnetic lens technology<br>
+            Lifetime frame warranty
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <div class="footer-logo">PARGATZ<span>MAGNETIC MOOD</span></div>
+                <p class="footer-desc">Reimagining optical excellence through magnetic innovation. Each piece is crafted with precision and designed for the discerning individual.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>EXPLORE</h4>
+                <a href="#">The Collection</a>
+                <a href="#">New Arrivals</a>
+                <a href="#">Limited Editions</a>
+                <a href="#">Lookbook</a>
+            </div>
+            <div class="footer-col">
+                <h4>HERITAGE</h4>
+                <a href="#">Our Story</a>
+                <a href="#">Craftsmanship</a>
+                <a href="#">Innovation</a>
+                <a href="#">Sustainability</a>
+            </div>
+            <div class="footer-col">
+                <h4>CONCIERGE</h4>
+                <a href="#">Contact</a>
+                <a href="#">Virtual Try-On</a>
+                <a href="#">Size Guide</a>
+                <a href="#">Warranty</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>PARGATZ © 2026 | MAGNETIC MOOD COLLECTION | ALL RIGHTS RESERVED</p>
+        </div>
+    </footer>
+    
+    <script>
+        /* NAV BLUR */
+        const nav = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+
+            if(window.scrollY > 50)
+                nav.classList.add("nav-scrolled");
+            else
+                nav.classList.remove("nav-scrolled");
+
+        });
+
+        /* IMAGE SWITCH */
+
+        const mainImage = document.getElementById("mainImage");
+
+        const thumbs = document.querySelectorAll(".thumb");
+
+        thumbs.forEach(thumb => {
+
+            thumb.addEventListener("click", () => {
+
+                mainImage.src = thumb.src;
+
+                thumbs.forEach(t => t.classList.remove("active"));
+
+                thumb.classList.add("active");
+
+            });
+
+        });
+    </script>
+</body>
+</html>
