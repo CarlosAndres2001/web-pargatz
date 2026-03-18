@@ -73,7 +73,7 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     overflow: hidden;
@@ -87,7 +87,7 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: fixed;
     opacity: 0;
     transition: opacity 1.5s ease-in-out; /* El desvanecido */
     z-index: 1;
@@ -95,7 +95,7 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
 
 /* El banner 2 con tu posición específica carajo */
 .hero-bg.b2 {
-    background-position: center -400px;
+    background-position: fixed;
 }
 
 .hero-bg.active {
@@ -130,12 +130,12 @@ nav.hide { transform: translateY(-100%); opacity: 0; }
 
 /* PRODUCT CATALOG */
 .catalog { padding: 80px 5%; }
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* EXACTAMENTE 3 por fila */
     gap: 30px;
 }
-
 
 /* ===== FOOTER ===== */
 footer {
@@ -244,98 +244,6 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--dorado-brillo);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
-    .product-info h2 {
-        font-size: 3.2rem;
-        letter-spacing: 8px;
-    }
-    
-    .product-image {
-        max-width: 500px;
-    }
-    
-    .hero-phrase {
-        font-size: 2rem;
-        letter-spacing: 6px;
-    }
-}
-
-@media (max-width: 992px) {
-    .product-section, .product-section.reverse {
-        padding: 0 5%;
-    }
-    
-    .product-info h2 {
-        font-size: 2.8rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-logo img {
-        width: 150px;
-    }
-    
-    .hero-phrase {
-        font-size: 1.5rem;
-        letter-spacing: 4px;
-    }
-    
-    .product-section, .product-section.reverse {
-        flex-direction: column;
-        height: auto;
-        min-height: 100vh;
-        padding: 80px 5% 40px;
-    }
-    
-    .product-image {
-        width: 100%;
-        max-width: 400px;
-        height: 40vh;
-        margin: 20px auto;
-    }
-    
-    .product-info {
-        max-width: 100%;
-        padding: 20px 5%;
-        text-align: center;
-        align-items: center;
-    }
-    
-    .product-info h2 {
-        font-size: 2.5rem;
-    }
-    
-    .product-info h2::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .product-info p {
-        text-align: center;
-    }
-    
-    .product-info::before {
-        left: 50%;
-        transform: translateX(-50%);
-        top: -10px;
-    }
-    
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-    
-    .footer-desc {
-        max-width: 100%;
-    }
-    
-    .social-links {
-        justify-content: center;
-    }
 }
 
 .section-header { text-align: center; margin-bottom: 60px; }
@@ -457,16 +365,6 @@ footer {
     color: #C5A021;
 }
 
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* Aquí podrías poner un menú hamburguesa luego */
-    .hero h1 { font-size: 3.5rem; font-weight: 100; letter-spacing: 20px; }
-    .hero-bg.b2 { background-position: center; } /* En móvil mejor centrado */
-    .catalog { padding: 60px 20px; }
-    .footer-content { text-align: center; }
-    .social-links { justify-content: center; }
-    .footer-desc { margin: 0 auto; }
-}
-
 /* HAMBURGUESA MINIMALISTA */
 .menu-toggle {
     display: none;
@@ -549,4 +447,166 @@ footer {
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .menu-toggle { display: flex; }
+}
+/* ===================================================
+   RESPONSIVE OVERRIDE - PARGATZ LUXURY ADAPTATION
+   =================================================== */
+
+/* 1. AJUSTES GENERALES PARA PC Y LAPTOPS */
+@media (min-width: 1025px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr) !important; /* Asegura 3 por fila */
+        gap: 40px;
+    }
+}
+
+/* 2. TABLETS (1024px a 769px) */
+@media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 por fila para no apretar */
+        gap: 20px;
+    }
+    
+    .hero-content {
+        padding-left: 0 !important; /* Centramos el contenido del banner */
+        text-align: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* 3. MÓVILES (768px o menos) - EL CAMBIO TOTAL */
+@media (max-width: 768px) {
+    /* ACTUALIZACIÓN PARA QUE NO SE SOLAPEN */
+    nav {
+        position: sticky; /* Cambiamos de fixed a sticky */
+        top: 0;
+        width: 100%;
+        padding: 20px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+        background: #000000; /* Fondo negro sólido para que no se trasluzca el hero al inicio */
+        backdrop-filter: blur(10px);
+    }
+
+    .hero {
+        height: calc(100vh - 80px); /* Ajusta 80px según el alto de tu nav */
+        min-height: 500px; /* Evita que en móviles muy pequeños se aplaste mucho */
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    
+    .hero-content {
+        padding-top: 0 !important; /* Ya no necesitas empujarlo hacia abajo */
+        margin-top: 0;
+    }
+
+    /* HERO: Arregla el logo que se va a la derecha */
+    .hero-content {
+        padding-left: 0 !important; 
+        padding-top: 0 !important;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 5;
+    }
+    .hero-bg,
+    .hero-bg.b2 {
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+    .logohero {
+        width: 70% !important; /* Escala el logo según la pantalla */
+        max-width: 300px;
+        height: auto;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+        letter-spacing: 10px;
+    }
+
+    /* CAROUSEL */
+    .gallery-container { padding: 80px 0; background: #050505; }
+    .carousel { width: 100%; height: 200px; position: relative; overflow: hidden; }
+    .slide { 
+        position: absolute; width: 100%; height: auto; opacity: 0;
+        transition: opacity 1.5s ease; background-size: auto; background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .slide.active { opacity: 0.4; }
+    .slide video { width: 100%; height: 100%; object-fit: cover; }
+
+
+    /* GRID DE PRODUCTOS: 1 por fila bien centrado */
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 10px;
+    }
+
+    .card-premium {
+        max-width: 380px; /* Evita que la tarjeta sea gigante */
+        margin: 0 auto; /* Centra la tarjeta en la pantalla */
+    }
+
+    /* FOOTER: Todo en una columna y al centro */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-desc {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* SECCIONES */
+    .catalog {
+        padding: 40px 5%;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+    }
+}
+
+/* 4. AJUSTE PARA PANTALLAS MINI (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .hero h1 {
+        font-size: 1.8rem;
+        letter-spacing: 6px;
+    }
+    
+    .badge-magnetic {
+        font-size: 7px;
+        padding: 4px 8px;
+    }
 }
